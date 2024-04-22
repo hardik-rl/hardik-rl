@@ -15,13 +15,13 @@ function Table3D(props) {
           geometry={nodes.Industrial_Table_0.children[0].geometry}
           material={materials.Old_Steel}
         >
-          <meshStandardMaterial map={dayTexture} />
+          <meshStandardMaterial map={dayTexture} color={props.customColors.soul}/>
         </mesh>
         <mesh
           geometry={nodes.GLTF_SceneRootNode.children[0].children[1].geometry}
           material={materials.Old_Steel}
         >
-          <meshStandardMaterial map={dayTexture} />
+          <meshStandardMaterial color={props.customColors.stripes} />
         </mesh>
       </group>
     </>
@@ -29,8 +29,8 @@ function Table3D(props) {
 }
 
 function Table() {
-  // const [soul, setSoul] = useState("#490206");
-  // const [stripes, setStripes] = useState("#ff0000");
+  const [soul, setSoul] = useState("#490206");
+  const [stripes, setStripes] = useState("#ff0000");
   const textureGroups = [
     {
       groupName: "Metal",
@@ -81,7 +81,7 @@ function Table() {
                   castShadow
                 />
                 <Table3D
-                  // customColors={{ soul: soul, stripes: stripes }}
+                  customColors={{ soul: soul, stripes: stripes }}
                   selectedTexture={selectedTexture}
                 />
                 <OrbitControls
@@ -92,9 +92,9 @@ function Table() {
               </Suspense>
             </Canvas>
           </div>
-          <h2>Material</h2>
+          <h2>Color chooser</h2>
           <div className="colors">
-            {/* <div>
+            <div>
               <input
                 type="color"
                 id="soul"
@@ -113,7 +113,7 @@ function Table() {
                 onChange={(e) => setStripes(e.target.value)}
               />
               <label htmlFor="stripes">Tyre</label>
-            </div> */}
+            </div>
             <div className="matirial">
               <SelectMenu
                 textureGroups={textureGroups}
